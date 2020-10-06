@@ -31,6 +31,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Objects;
 
 
 import android.view.LayoutInflater;
@@ -77,7 +78,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        mainSP = this.getActivity().getSharedPreferences("globalSettings", Context.MODE_PRIVATE);
+        mainSP = this.requireActivity().getSharedPreferences("globalSettings", Context.MODE_PRIVATE);
         mainActGson = new Gson();
 
 //        if (getActivity().checkSelfPermission(Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) { //check internet permission
@@ -100,8 +101,6 @@ public class HomeFragment extends Fragment {
                     Toast.makeText(getActivity(), R.string.E_LoginNeeded, Toast.LENGTH_SHORT).show();
                     NavController navController = Navigation.findNavController(requireView());
                     navController.navigate(R.id.nav_settings);
-                    //Intent intent = new Intent(getActivity(), SettingsActivity.class);
-                    //startActivity(intent);
                 } else {
                     //convert info to string
                     try {
@@ -117,13 +116,11 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity(), R.string.E_Fail2Convert, Toast.LENGTH_SHORT).show();
                         NavController navController = Navigation.findNavController(requireView());
                         navController.navigate(R.id.nav_settings);
-                        //Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                        //startActivity(intent);
                     }
                     //start http request
                     try {
                         // Instantiate the RequestQueue.
-                        RequestQueue queue = Volley.newRequestQueue(getActivity());
+                        RequestQueue queue = Volley.newRequestQueue(requireActivity());
                         String url = mainSP.getString("serverAddress", "");
                         try {
                             URL tempURL = new URL(url);
@@ -131,8 +128,6 @@ public class HomeFragment extends Fragment {
                             Toast.makeText(getActivity(), R.string.E_NotAVaildURL, Toast.LENGTH_SHORT).show();
                             NavController navController = Navigation.findNavController(requireView());
                             navController.navigate(R.id.nav_settings);
-                            //Intent intent = new Intent(getActivity(), SettingsActivity.class);
-                            //startActivity(intent);
                         }
                         assert url != null;
                         if (!url.endsWith("?")) {
@@ -181,14 +176,10 @@ public class HomeFragment extends Fragment {
                                     Toast.makeText(getActivity(), R.string.E_ServerNoResponse, Toast.LENGTH_SHORT).show();
                                     NavController navController = Navigation.findNavController(requireView());
                                     navController.navigate(R.id.nav_settings);
-//                                    Intent intent = new Intent(getActivity(), SettingsActivity.class);
-//                                    startActivity(intent);
                                 } else if (error instanceof AuthFailureError) {
                                     Toast.makeText(getActivity(), R.string.E_WrongPasswordOrUA, Toast.LENGTH_SHORT).show();
                                     NavController navController = Navigation.findNavController(requireView());
                                     navController.navigate(R.id.nav_settings);
-//                                    Intent intent = new Intent(getActivity(), SettingsActivity.class);
-//                                    startActivity(intent);
                                 }
                                 Log.d("log", "Something is fucked");
                                 Log.d("Reason", error.toString());
@@ -203,8 +194,6 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(getActivity(), R.string.E_Fail2ConvertRequest, Toast.LENGTH_SHORT).show();
                         NavController navController = Navigation.findNavController(requireView());
                         navController.navigate(R.id.nav_settings);
-//                        Intent intent = new Intent(getActivity(), SettingsActivity.class);
-//                        startActivity(intent);
                     }
                 }
             }
@@ -234,16 +223,6 @@ public class HomeFragment extends Fragment {
                 NavController navController = Navigation.findNavController(requireView());
                 navController.navigate(R.id.nav_settings);
 
-                //View settings = new View();
-                //settings = root.findViewById(R.id.nav_settings);
-//                MainActivity.MAmainMenu.
-
-
-//                MenuItem SettingsNav = (MenuItem) root.findViewById(R.id.nav_settings);
-//                onOptionsItemSelected(SettingsNav);
-
-                //MainActivity.this.finish();
-                //System.exit(0);
                 /**
                  * @breif ok this note is no longer a working stuff because we find that Navigation is good
                  * https://juejin.im/entry/6844903613727260685
@@ -252,25 +231,7 @@ public class HomeFragment extends Fragment {
                  * therefore using transaction will change xml which i actually don't want to do
                  * so lets just perform a simple click, lol
                  */
-//                getView().performClick();
 
-//                SettingsFragment newSFragment = new SettingsFragment();
-//                Bundle args = new Bundle();
-//                //args.putInt(SettingsFragment.ARG_POSITION, position);
-//                newSFragment.setArguments(args);
-//
-//                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-//
-//                // Replace whatever is in the fragment_container view with this fragment,
-//                // and add the transaction to the back stack so the user can navigate back
-//                //transaction.replace(R.id.nav_host_fragment_container, newSFragment);
-//                transaction.replace(R.id.nav_host_fragment, newSFragment);
-//                transaction.addToBackStack(null);
-//
-//                // Commit the transaction
-//                transaction.commit();
-//                Intent intent = new Intent(getActivity(), SettingsActivity.class);
-//                startActivity(intent);
             }
         });
 

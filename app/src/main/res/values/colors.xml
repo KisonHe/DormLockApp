@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FEDFE1</color>
+    <color name="fab_bgc">#F8C3CD</color>
     <color name="colorPrimaryDark">#EEA9A9</color>
     <color name="colorAccent">#D0104C</color>
     <color name="activityBGC">#EDF1EA</color>
