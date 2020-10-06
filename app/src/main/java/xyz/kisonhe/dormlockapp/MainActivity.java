@@ -61,6 +61,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+                navController.navigate(R.id.nav_settings);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

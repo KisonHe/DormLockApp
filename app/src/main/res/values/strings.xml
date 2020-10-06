@@ -2,8 +2,8 @@
     <string name="app_name">DormLockApp</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Dorm Lock Opener</string>
+    <string name="nav_header_subtitle">Mr AnDong Fly Mom</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -42,4 +42,5 @@
     <string name="E_NeedNetPermission">Need Permission for internet</string>
     <string name="S_DoorShouldOpen">Door (hopefully) will open</string>
     <string name="E_LoginNeeded">Error:NeedToLogin</string>
+    <string name="action_help">Help</string>
 </resources>
