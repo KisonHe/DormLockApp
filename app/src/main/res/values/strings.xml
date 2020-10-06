@@ -43,4 +43,7 @@
     <string name="S_DoorShouldOpen">Door (hopefully) will open</string>
     <string name="E_LoginNeeded">Error:NeedToLogin</string>
     <string name="action_help">Help</string>
+    <string name="BatteryTextViewDefaultString">Unknown Battery Remaining</string>
+    <string name="batteryImgcontentDescription">Image to tell user the remaining battery level</string>
+    <string name="E_Fail2GetBatyInfo">Fail to get Battery Info</string>
 </resources>

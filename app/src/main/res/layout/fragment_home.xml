@@ -25,5 +25,26 @@
         android:layout_height="wrap_content"
         android:text="@string/settingsButtonText" />
 
+    <ImageView
+        android:id="@+id/batteryImg"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/openDoorButton"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        app:srcCompat="@drawable/ic_battery_unknown"
+        android:contentDescription="@string/batteryImgcontentDescription" />
+
+    <TextView
+        android:id="@+id/BatteryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/openDoorButton"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/batteryImg"
+        android:text="@string/BatteryTextViewDefaultString" />
+
+
 
 </RelativeLayout>

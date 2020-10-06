@@ -12,6 +12,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -163,8 +164,18 @@ public class HomeFragment extends Fragment {
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
-                                        if (response.equals("auth passed")) {
+//                                        if (response.equals("auth passed")) {
+//                                            Toast.makeText(getActivity(), R.string.S_DoorShouldOpen, Toast.LENGTH_SHORT).show();
+//                                        }
+                                        if (response.contains("auth passed")) {
                                             Toast.makeText(getActivity(), R.string.S_DoorShouldOpen, Toast.LENGTH_SHORT).show();
+                                            try {
+                                            MainActivity.BatteryLevel = Integer.parseInt(response.replace("auth passed",""));
+                                            } catch (Exception e){
+                                                Toast.makeText(getActivity(), R.string.E_Fail2GetBatyInfo, Toast.LENGTH_SHORT).show();
+                                                MainActivity.BatteryLevel = -1;
+                                            }
+                                            updateBatteryImg(root);
                                         }
                                         Log.d("log", "Response is: " + response);
                                     }
@@ -235,6 +246,43 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        updateBatteryImg(root);
+
+//        ImageView battImg = root.findViewById(R.id.batteryImg);
+//        battImg.setImageResource(R.drawable.battery00);
+
         return root;
     }
+
+    private int updateBatteryImg(View view){
+        ImageView battImg = view.findViewById(R.id.batteryImg);
+        //MainActivity.BatteryLevel = 100;
+        switch (MainActivity.BatteryLevel){
+
+            case 100:
+                battImg.setImageResource(R.drawable.battery100);
+                break;
+            case 75:
+                battImg.setImageResource(R.drawable.battery75);
+                break;
+            case 50:
+                battImg.setImageResource(R.drawable.battery50);
+                break;
+            case 25:
+                battImg.setImageResource(R.drawable.battery25);
+                break;
+            case 0:
+                battImg.setImageResource(R.drawable.battery00);
+                break;
+
+            default:
+            case -1:
+                battImg.setImageResource(R.drawable.ic_battery_unknown);
+                break;
+
+
+        }
+        return 0;
+    }
+
 }
