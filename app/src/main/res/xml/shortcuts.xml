@@ -6,8 +6,8 @@
         android:shortcutShortLabel="@string/compose_shortcut_short_label1">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.example.dormlockdemo"
-            android:targetClass="com.example.dormlockdemo.MainActivity">
+            android:targetPackage="xyz.kisonhe.dormlockapp"
+            android:targetClass="xyz.kisonhe.dormlockapp.MainActivity">
             <extra
                 android:name="shortCutOpenDoorEXTRA"
                 android:value="value" />
