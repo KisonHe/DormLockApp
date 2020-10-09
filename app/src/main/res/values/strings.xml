@@ -46,4 +46,15 @@
     <string name="BatteryTextViewDefaultString">Unknown Battery Remaining</string>
     <string name="batteryImgcontentDescription">Image to tell user the remaining battery level</string>
     <string name="E_Fail2GetBatyInfo">Fail to get Battery Info</string>
+    <string name="Battery100TextViewStr">Battery is full</string>
+    <string name="Battery75TextViewStr">Battery is 75% full</string>
+    <string name="Battery50TextViewStr">Battery is half full</string>
+    <string name="Battery25TextViewStr">Battery needed to be changed now!</string>
+    <string name="Battery00TextViewStr">Battery is fucked</string>
+    <string name="menu_admin">Admin</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ok">OK</string>
+    <string name="notAdmin">You are not an admin!</string>
+    <string name="error">Error</string>
 </resources>

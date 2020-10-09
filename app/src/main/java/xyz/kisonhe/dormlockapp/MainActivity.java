@@ -1,27 +1,26 @@
 package xyz.kisonhe.dormlockapp;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-//    static public Menu MAmainMenu;
+    //    static public Menu MAmainMenu;
     public static int BatteryLevel = -1;
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_settings)
+                R.id.nav_home, R.id.nav_settings,R.id.nav_admin)
                 .setDrawerLayout(drawer)
                 .build();
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -47,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         Intent gotIntent = getIntent();
         String message = gotIntent.getStringExtra(ChangePasswordActivity.FRAG_TO_START_MESSAGE);
-        if (message!=null){
-            if (message.equals("Settings")){
+        if (message != null) {
+            if (message.equals("Settings")) {
                 navController.navigate(R.id.nav_settings);
             }
         }
@@ -63,13 +62,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         switch (item.getItemId()) {
+
             case R.id.action_settings:
-                NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
                 navController.navigate(R.id.nav_settings);
+                return true;
+
+            case R.id.action_admin:
+                navController.navigate(R.id.nav_admin);
                 return true;
 
             default:

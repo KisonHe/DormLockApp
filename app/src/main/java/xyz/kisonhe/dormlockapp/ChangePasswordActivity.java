@@ -1,17 +1,11 @@
 package xyz.kisonhe.dormlockapp;
 
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import android.os.Build;
 import android.os.Bundle;
-
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -19,6 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NoConnectionError;
@@ -97,7 +95,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                     } catch (Exception e) {
                                         Toast.makeText(ChangePasswordActivity.this, R.string.E_Fail2Convert, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
-                                        intent.putExtra(FRAG_TO_START_MESSAGE,"Settings");
+                                        intent.putExtra(FRAG_TO_START_MESSAGE, "Settings");
                                         startActivity(intent);
                                     }
 
@@ -112,11 +110,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                         } catch (Exception e) {
                                             Toast.makeText(ChangePasswordActivity.this, R.string.E_NotAVaildURL, Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
-                                            intent.putExtra(FRAG_TO_START_MESSAGE,"Settings");
+                                            intent.putExtra(FRAG_TO_START_MESSAGE, "Settings");
                                             startActivity(intent);
                                         }
                                         assert url != null;
-                                        url+="/changepassword";//nodemcu should handle this in another function
+                                        url += "/changepassword";//nodemcu should handle this in another function
                                         if (!url.endsWith("?")) {
                                             url += "?";
                                         }
@@ -163,12 +161,12 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                                                     Toast.makeText(ChangePasswordActivity.this, R.string.E_ServerNoResponse, Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
-                                                    intent.putExtra(FRAG_TO_START_MESSAGE,"Settings");
+                                                    intent.putExtra(FRAG_TO_START_MESSAGE, "Settings");
                                                     startActivity(intent);
                                                 } else if (error instanceof AuthFailureError) {
                                                     Toast.makeText(ChangePasswordActivity.this, R.string.E_WrongPasswordOrUA, Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
-                                                    intent.putExtra(FRAG_TO_START_MESSAGE,"Settings");
+                                                    intent.putExtra(FRAG_TO_START_MESSAGE, "Settings");
                                                     startActivity(intent);
 
                                                 }

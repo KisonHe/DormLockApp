@@ -4,15 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 
 import xyz.kisonhe.dormlockapp.ChangePasswordActivity;
 import xyz.kisonhe.dormlockapp.R;
@@ -68,7 +67,7 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        SharedPreferences sharedPreferences= getActivity().getSharedPreferences("globalSettings", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("globalSettings", Context.MODE_PRIVATE);
 
         final SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -81,10 +80,10 @@ public class SettingsFragment extends Fragment {
         final EditText muserName = root.findViewById(R.id.userName);
         final EditText muserPassword = root.findViewById(R.id.userPassword);
 
-        if (sharedPreferences.getBoolean("userInfoIsLegal",false)){
-            mserverAddress.setText(sharedPreferences.getString("serverAddress",""));
-            muserName.setText(sharedPreferences.getString("userName",""));
-            muserPassword.setText(sharedPreferences.getString("userPassword",""));
+        if (sharedPreferences.getBoolean("userInfoIsLegal", false)) {
+            mserverAddress.setText(sharedPreferences.getString("serverAddress", ""));
+            muserName.setText(sharedPreferences.getString("userName", ""));
+            muserPassword.setText(sharedPreferences.getString("userPassword", ""));
         }
 
 
@@ -92,15 +91,14 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    editor.putString("userName",muserName.getText().toString());
-                    editor.putString("userPassword",muserPassword.getText().toString());
-                    editor.putString("serverAddress",mserverAddress.getText().toString());
-                    editor.putBoolean("userInfoIsLegal",true);
+                    editor.putString("userName", muserName.getText().toString());
+                    editor.putString("userPassword", muserPassword.getText().toString());
+                    editor.putString("serverAddress", mserverAddress.getText().toString());
+                    editor.putBoolean("userInfoIsLegal", true);
                     editor.apply();
 
-                }
-                catch (Exception e){
-                    Toast.makeText(getActivity(), R.string.E_Fail2WriteSP,Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), R.string.E_Fail2WriteSP, Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -114,7 +112,6 @@ public class SettingsFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
 
 
         return root;

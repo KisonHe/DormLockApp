@@ -1,20 +1,25 @@
 package xyz.kisonhe.dormlockapp.ui.home;
 
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NoConnectionError;
@@ -25,34 +30,15 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.Objects;
-
-
-import android.view.LayoutInflater;
-
-import android.view.ViewGroup;
-
-
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import xyz.kisonhe.dormlockapp.MainActivity;
 import xyz.kisonhe.dormlockapp.R;
-import xyz.kisonhe.dormlockapp.ui.settings.SettingsFragment;
 
 class userInfoClass {
     public String cUserName;
@@ -170,8 +156,8 @@ public class HomeFragment extends Fragment {
                                         if (response.contains("auth passed")) {
                                             Toast.makeText(getActivity(), R.string.S_DoorShouldOpen, Toast.LENGTH_SHORT).show();
                                             try {
-                                            MainActivity.BatteryLevel = Integer.parseInt(response.replace("auth passed",""));
-                                            } catch (Exception e){
+                                                MainActivity.BatteryLevel = Integer.parseInt(response.replace("auth passed ", ""));
+                                            } catch (Exception e) {
                                                 Toast.makeText(getActivity(), R.string.E_Fail2GetBatyInfo, Toast.LENGTH_SHORT).show();
                                                 MainActivity.BatteryLevel = -1;
                                             }
@@ -254,30 +240,37 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    private int updateBatteryImg(View view){
+    private int updateBatteryImg(View view) {
         ImageView battImg = view.findViewById(R.id.batteryImg);
+        TextView BatteryTextView = view.findViewById(R.id.BatteryTextView);
         //MainActivity.BatteryLevel = 100;
-        switch (MainActivity.BatteryLevel){
+        switch (MainActivity.BatteryLevel) {
 
             case 100:
                 battImg.setImageResource(R.drawable.battery100);
+                BatteryTextView.setText(R.string.Battery100TextViewStr);
                 break;
             case 75:
                 battImg.setImageResource(R.drawable.battery75);
+                BatteryTextView.setText(R.string.Battery75TextViewStr);
                 break;
             case 50:
                 battImg.setImageResource(R.drawable.battery50);
+                BatteryTextView.setText(R.string.Battery50TextViewStr);
                 break;
             case 25:
                 battImg.setImageResource(R.drawable.battery25);
+                BatteryTextView.setText(R.string.Battery25TextViewStr);
                 break;
             case 0:
                 battImg.setImageResource(R.drawable.battery00);
+                BatteryTextView.setText(R.string.Battery00TextViewStr);
                 break;
 
             default:
             case -1:
                 battImg.setImageResource(R.drawable.ic_battery_unknown);
+                BatteryTextView.setText(R.string.BatteryTextViewDefaultString);
                 break;
 
 
