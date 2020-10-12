@@ -201,6 +201,7 @@ public class HomeFragment extends Fragment {
         String message = checkShortCut.getStringExtra("shortCutOpenDoorEXTRA");
         if (message != null) {
             if (message.equals("value")) {
+                getActivity().getIntent().removeExtra("shortCutOpenDoorEXTRA");
                 mopenDoorButton.performClick();
             }
         }
