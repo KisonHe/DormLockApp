@@ -28,7 +28,7 @@
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
-    <string name="hello_world">Hello Square World!</string>
+    <string name="hello_world" translatable="false">Hello Square World!</string>
     <string name="E_Fail2WriteSP">Error:Fail to write preferences</string>
     <string name="E_Fail2Convert">Error:Fail to convert</string>
     <string name="E_NotAVaildURL">Error:Not a valid server address</string>
