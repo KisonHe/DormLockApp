@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<PreferenceCategory android:title="Main Settings">
+    <EditTextPreference
+        android:key="serverAddress"
+        android:title="Server Address"
+        app:useSimpleSummaryProvider="true"
+        android:inputType="textPassword" />
+
+    <EditTextPreference
+        android:key="userName"
+        android:title="User Name"
+        app:useSimpleSummaryProvider="true" />
+
+    <EditTextPreference
+        android:inputType="textPassword"
+        android:key="userPassword"
+        android:summary="@string/InputPasswordHint"
+        android:title="User Password" />
+    <!-- We already used a lot about userInfoIsLegal, so just fix it this way -->
+    <SwitchPreference
+        android:key="userInfoIsLegal"
+        app:isPreferenceVisible="false" />
+    <Preference
+        android:key="ChangePasswordPreference"
+        android:title="Change Password"
+        android:summary="@string/ChangePasswordHint"/>
+</PreferenceCategory>
+    <PreferenceCategory android:title="Admin">
+
+    </PreferenceCategory>
+</PreferenceScreen>

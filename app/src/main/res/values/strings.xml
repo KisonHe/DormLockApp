@@ -12,10 +12,6 @@
 
 
     <string name="InputPasswordHint">Input password</string>
-    <string name="InputusernameHint">InputUserName</string>
-    <string name="inputServerAddressHint">Input ServerAddress</string>
-    <string name="saveSettingsButtonText">Save</string>
-    <string name="changePasswordButtonText">ChangePassword</string>
     <string name="confirm_new_password">Confirm new Password</string>
     <string name="enter_new_password">Enter New Password</string>
     <string name="enter_old_pasword">Enter Old Pasword</string>
@@ -23,13 +19,8 @@
     <string name="CP_ExplainText">Not finished yet. This activity allows you to change password to open the door</string>
     <string name="CP_ChangePasswordButtonText">Change</string>
     <string name="compose_shortcut_short_label1">Open</string>
-    <string name="title_activity_change_passwrod" translatable="false">ChangePasswrodActivity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world" translatable="false">Hello Square World!</string>
-    <string name="E_Fail2WriteSP">Error:Fail to write preferences</string>
+    <string name="title_activity_change_passwrod" >ChangePasswrod</string>
+
     <string name="E_Fail2Convert">Error:Fail to convert</string>
     <string name="E_NotAVaildURL">Error:Not a valid server address</string>
     <string name="S_PasswordChangedAndSaved">Password Successfully Changed! Auto changed Saved new Password and User!</string>
@@ -37,10 +28,7 @@
     <string name="E_WrongPasswordOrUA">Error:Auth failed! Check your old password!</string>
     <string name="E_Fail2ConvertRequest">Error:Fail to convert request</string>
     <string name="E_PasswordNoMatch">Error:Passwords Doesn\'t Match!</string>
-    <string name="E_NeedNetPermission">Need Permission for internet</string>
     <string name="S_DoorShouldOpen">Door (hopefully) will open</string>
-    <string name="E_LoginNeeded">Error:NeedToLogin</string>
-    <string name="action_help">Help</string>
     <string name="BatteryTextViewDefaultString">Unknown Battery Remaining</string>
     <string name="batteryImgcontentDescription" translatable="false">Image to tell user the remaining battery level</string>
     <string name="E_Fail2GetBatyInfo">Fail to get Battery Info</string>
@@ -50,9 +38,5 @@
     <string name="Battery25TextViewStr">Battery needed to be changed now!</string>
     <string name="Battery00TextViewStr">Battery is fucked</string>
     <string name="menu_admin">Admin</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="ok">OK</string>
-    <string name="notAdmin">You are not an admin!</string>
-    <string name="error">Error</string>
+    <string name="ChangePasswordHint">Click to change your password on server</string>
 </resources>

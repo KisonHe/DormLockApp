@@ -10,10 +10,6 @@
     <string name="openDoorButtonText">芝麻开门</string>
     <string name="settingsButtonText">设置</string>
     <string name="InputPasswordHint">请输入密码</string>
-    <string name="InputusernameHint">请输入用户名</string>
-    <string name="inputServerAddressHint">请输入服务器地址</string>
-    <string name="saveSettingsButtonText">保存</string>
-    <string name="changePasswordButtonText">变更密码</string>
     <string name="confirm_new_password">确认新密码</string>
     <string name="enter_new_password">输入新密码</string>
     <string name="enter_old_pasword">输入原密码</string>
@@ -21,7 +17,6 @@
     <string name="CP_ExplainText">还没做完</string>
     <string name="CP_ChangePasswordButtonText">变更密码</string>
     <string name="compose_shortcut_short_label1">开门</string>
-    <string name="E_Fail2WriteSP">错误：未能写入配置</string>
     <string name="E_Fail2Convert">错误：未能转换</string>
     <string name="E_NotAVaildURL">错误：非法服务器地址</string>
     <string name="S_PasswordChangedAndSaved">密码变更成功！新密码已保存</string>
@@ -29,10 +24,7 @@
     <string name="E_WrongPasswordOrUA">错误：不正确的用户名或密码</string>
     <string name="E_Fail2ConvertRequest">错误：未能转化请求</string>
     <string name="E_PasswordNoMatch">错误：新密码不匹配！</string>
-    <string name="E_NeedNetPermission">需要联网权限</string>
     <string name="S_DoorShouldOpen">门（但愿）会开</string>
-    <string name="E_LoginNeeded">错误：请先登录</string>
-    <string name="action_help">帮助</string>
     <string name="BatteryTextViewDefaultString">未知电池状态</string>
     <string name="E_Fail2GetBatyInfo">未能获取电池状态</string>
     <string name="Battery100TextViewStr">满电池</string>
@@ -41,7 +33,6 @@
     <string name="Battery25TextViewStr">请更换电池</string>
     <string name="Battery00TextViewStr">请立刻更换电池</string>
     <string name="menu_admin">管理员</string>
-    <string name="notAdmin">该账户不是管理员</string>
-    <string name="error">错误</string>
-    <string name="ok">好</string>
+    <string name="ChangePasswordHint">点击以改变密码</string>
+    <string name="title_activity_change_passwrod">变更密码</string>
 </resources>

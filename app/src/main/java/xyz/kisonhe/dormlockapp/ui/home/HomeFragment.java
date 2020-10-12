@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.preference.PreferenceManager;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NoConnectionError;
@@ -43,12 +44,6 @@ import xyz.kisonhe.dormlockapp.R;
 class userInfoClass {
     public String cUserName;
     public String cUserPassword;
-    /**
-     * cCommand:
-     * 0 : Check if auth can pass, without opening
-     * 1 : Ask to open door
-     */
-    public String cCommand;
     public String verifyCode;
 
 }
@@ -65,7 +60,8 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        mainSP = this.requireActivity().getSharedPreferences("globalSettings", Context.MODE_PRIVATE);
+        //mainSP = this.requireActivity().getSharedPreferences("globalSettings", Context.MODE_PRIVATE);
+        mainSP = PreferenceManager.getDefaultSharedPreferences(this.requireActivity() /* Activity context */);
         mainActGson = new Gson();
 
 //        if (getActivity().checkSelfPermission(Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) { //check internet permission
@@ -84,25 +80,24 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String userinfoJSON = "";
-                if (!mainSP.getBoolean("userInfoIsLegal", false)) {
-                    Toast.makeText(getActivity(), R.string.E_LoginNeeded, Toast.LENGTH_SHORT).show();
-                    NavController navController = Navigation.findNavController(requireView());
-                    navController.navigate(R.id.nav_settings);
-                } else {
-                    //convert info to string
                     try {
                         userInfoClass tUserInfo = new userInfoClass();
                         tUserInfo.cUserName = mainSP.getString("userName", "");
                         tUserInfo.cUserPassword = mainSP.getString("userPassword", "");
-                        tUserInfo.cCommand = "1";
+                        if (tUserInfo.cUserName.equals("") || tUserInfo.cUserPassword.equals("")){
+                            Toast.makeText(getActivity(), R.string.E_WrongPasswordOrUA, Toast.LENGTH_SHORT).show();
+                            NavController navController = Navigation.findNavController(requireView());
+                            navController.navigate(R.id.nav_settings);
+                            return;
+                        }
                         int Key = K_AES.GetKey();
                         String FormatedKey = String.format(Locale.US, "%016d", Key);
                         tUserInfo.verifyCode = Base64.encodeToString(FormatedKey.getBytes(), Base64.DEFAULT);
                         userinfoJSON = mainActGson.toJson(tUserInfo);
                     } catch (Exception e) {
                         Toast.makeText(getActivity(), R.string.E_Fail2Convert, Toast.LENGTH_SHORT).show();
-                        NavController navController = Navigation.findNavController(requireView());
-                        navController.navigate(R.id.nav_settings);
+                        //NavController navController = Navigation.findNavController(requireView());
+                       // navController.navigate(R.id.nav_settings);
                     }
                     //start http request
                     try {
@@ -113,8 +108,8 @@ public class HomeFragment extends Fragment {
                             URL tempURL = new URL(url);
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.E_NotAVaildURL, Toast.LENGTH_SHORT).show();
-                            NavController navController = Navigation.findNavController(requireView());
-                            navController.navigate(R.id.nav_settings);
+                            //NavController navController = Navigation.findNavController(requireView());
+                            //navController.navigate(R.id.nav_settings);
                         }
                         assert url != null;
                         if (!url.endsWith("?")) {
@@ -171,12 +166,12 @@ public class HomeFragment extends Fragment {
 
                                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                                     Toast.makeText(getActivity(), R.string.E_ServerNoResponse, Toast.LENGTH_SHORT).show();
-                                    NavController navController = Navigation.findNavController(requireView());
-                                    navController.navigate(R.id.nav_settings);
+                                    //NavController navController = Navigation.findNavController(requireView());
+                                   // navController.navigate(R.id.nav_settings);
                                 } else if (error instanceof AuthFailureError) {
                                     Toast.makeText(getActivity(), R.string.E_WrongPasswordOrUA, Toast.LENGTH_SHORT).show();
-                                    NavController navController = Navigation.findNavController(requireView());
-                                    navController.navigate(R.id.nav_settings);
+                                    //NavController navController = Navigation.findNavController(requireView());
+                                    //navController.navigate(R.id.nav_settings);
                                 }
                                 Log.d("log", "Something is fucked");
                                 Log.d("Reason", error.toString());
@@ -189,10 +184,10 @@ public class HomeFragment extends Fragment {
 
                     } catch (Exception e) {
                         Toast.makeText(getActivity(), R.string.E_Fail2ConvertRequest, Toast.LENGTH_SHORT).show();
-                        NavController navController = Navigation.findNavController(requireView());
-                        navController.navigate(R.id.nav_settings);
+                        //NavController navController = Navigation.findNavController(requireView());
+                        //navController.navigate(R.id.nav_settings);
                     }
-                }
+//                }
             }
         });
 
@@ -235,8 +230,6 @@ public class HomeFragment extends Fragment {
 
         updateBatteryImg(root);
 
-//        ImageView battImg = root.findViewById(R.id.batteryImg);
-//        battImg.setImageResource(R.drawable.battery00);
 
         return root;
     }

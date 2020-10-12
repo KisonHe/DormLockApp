@@ -14,14 +14,7 @@
     <fragment
         android:id="@+id/nav_settings"
         android:name="xyz.kisonhe.dormlockapp.ui.settings.SettingsFragment"
-        android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_settings" />
-
-    <fragment
-        android:id="@+id/nav_admin"
-        android:name="xyz.kisonhe.dormlockapp.ui.admin.AdminFragment"
-        android:label="@string/menu_admin"
-        tools:layout="@layout/fragment_admin" />
+        android:label="@string/menu_settings" />
 
 
 </navigation>

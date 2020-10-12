@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NoConnectionError;
@@ -51,7 +52,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final SharedPreferences CP_SP = getSharedPreferences("globalSettings", Context.MODE_PRIVATE);
+        //final SharedPreferences CP_SP = getSharedPreferences("globalSettings", Context.MODE_PRIVATE);
+        final SharedPreferences CP_SP = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor CP_SP_editor = CP_SP.edit();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
