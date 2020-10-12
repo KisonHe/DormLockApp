@@ -8,8 +8,8 @@ android {
         applicationId "xyz.kisonhe.dormlockapp"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 3
-        versionName "0.3.beta"
+        versionCode 4
+        versionName "0.4.beta"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

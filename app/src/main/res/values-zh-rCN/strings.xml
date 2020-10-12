@@ -14,7 +14,7 @@
     <string name="enter_new_password">输入新密码</string>
     <string name="enter_old_pasword">输入原密码</string>
     <string name="enter_username">输入用户名</string>
-    <string name="CP_ExplainText">还没做完</string>
+    <string name="CP_ExplainText">还没做完，先别用</string>
     <string name="CP_ChangePasswordButtonText">变更密码</string>
     <string name="compose_shortcut_short_label1">开门</string>
     <string name="E_Fail2Convert">错误：未能转换</string>
@@ -32,7 +32,16 @@
     <string name="Battery50TextViewStr">50%电量</string>
     <string name="Battery25TextViewStr">请更换电池</string>
     <string name="Battery00TextViewStr">请立刻更换电池</string>
-    <string name="menu_admin">管理员</string>
-    <string name="ChangePasswordHint">点击以改变密码</string>
+    <string name="ChangePasswordHint">点击以变更密码</string>
     <string name="title_activity_change_passwrod">变更密码</string>
+    <string name="array_DarkModeOptionFollowSystem">跟随系统</string>
+    <string name="array_DarkModeOptionLightMode">浅色模式</string>
+    <string name="array_DarkModeOptionDarkMode">深色模式</string>
+    <string name="titleDarkMode">主题颜色</string>
+    <string name="titleChangePassword">变更密码</string>
+    <string name="titleUserName">用户名</string>
+    <string name="titleServerAddress">服务器地址</string>
+    <string name="titleUserPassword">密码</string>
+    <string name="titleMainSettings">主要设置</string>
+    <string name="titleAdmin">服务器管理员</string>
 </resources>

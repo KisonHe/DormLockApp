@@ -37,6 +37,16 @@
     <string name="Battery50TextViewStr">Battery is half full</string>
     <string name="Battery25TextViewStr">Battery needed to be changed now!</string>
     <string name="Battery00TextViewStr">Battery is fucked</string>
-    <string name="menu_admin">Admin</string>
     <string name="ChangePasswordHint">Click to change your password on server</string>
+
+    <string name="array_DarkModeOptionFollowSystem">Follow System</string>
+    <string name="array_DarkModeOptionLightMode">Light Mode</string>
+    <string name="array_DarkModeOptionDarkMode">Dark Mode</string>
+    <string name="titleDarkMode">DarkMode</string>
+    <string name="titleChangePassword">Change Password</string>
+    <string name="titleUserName">User Name</string>
+    <string name="titleServerAddress">Server Address</string>
+    <string name="titleUserPassword">User Password</string>
+    <string name="titleMainSettings">Main Settings</string>
+    <string name="titleAdmin">Server Admin</string>
 </resources>

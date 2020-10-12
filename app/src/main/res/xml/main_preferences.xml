@@ -3,33 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<PreferenceCategory android:title="Main Settings">
+<PreferenceCategory android:title="@string/titleMainSettings">
     <EditTextPreference
         android:key="serverAddress"
-        android:title="Server Address"
+        android:title="@string/titleServerAddress"
         app:useSimpleSummaryProvider="true"
         android:inputType="textPassword" />
 
     <EditTextPreference
         android:key="userName"
-        android:title="User Name"
+        android:title="@string/titleUserName"
         app:useSimpleSummaryProvider="true" />
 
     <EditTextPreference
         android:inputType="textPassword"
         android:key="userPassword"
         android:summary="@string/InputPasswordHint"
-        android:title="User Password" />
+        android:title="@string/titleUserPassword" />
     <!-- We already used a lot about userInfoIsLegal, so just fix it this way -->
     <SwitchPreference
         android:key="userInfoIsLegal"
         app:isPreferenceVisible="false" />
     <Preference
         android:key="ChangePasswordPreference"
-        android:title="Change Password"
+        android:title="@string/titleChangePassword"
         android:summary="@string/ChangePasswordHint"/>
+    <ListPreference
+        android:defaultValue="MODE_NIGHT_FOLLOW_SYSTEM"
+        android:entries="@array/mode_entries"
+        android:entryValues="@array/mode_values"
+        app:useSimpleSummaryProvider="true"
+        android:key="DarkModeConfig"
+        android:title="@string/titleDarkMode" />
 </PreferenceCategory>
-    <PreferenceCategory android:title="Admin">
+    <PreferenceCategory android:title="@string/titleAdmin">
 
     </PreferenceCategory>
 </PreferenceScreen>
