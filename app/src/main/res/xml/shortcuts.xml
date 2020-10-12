@@ -4,6 +4,9 @@
         android:enabled="true"
         android:icon="@drawable/door"
         android:shortcutShortLabel="@string/compose_shortcut_short_label1">
+<!--        <intent-->
+<!--            android:action="android.intent.action.VIEW"-->
+<!--            android:data="http://www.google.com" />-->
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="xyz.kisonhe.dormlockapp"
