@@ -16,10 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 
 import com.android.volley.AuthFailureError;
@@ -40,6 +42,10 @@ import java.util.Locale;
 
 import xyz.kisonhe.dormlockapp.MainActivity;
 import xyz.kisonhe.dormlockapp.R;
+
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 
 class userInfoClass {
     public String cUserName;
@@ -62,6 +68,22 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         //mainSP = this.requireActivity().getSharedPreferences("globalSettings", Context.MODE_PRIVATE);
         mainSP = PreferenceManager.getDefaultSharedPreferences(this.requireActivity() /* Activity context */);
+        String theme = mainSP.getString("DarkModeConfig","-1");
+        switch (theme) {
+            case "-1":
+                Log.d("theme", "notSet");
+                break;
+            case "MODE_NIGHT_FOLLOW_SYSTEM":
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_FOLLOW_SYSTEM);
+                break;
+            case "MODE_NIGHT_NO":
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO);
+                break;
+            case "MODE_NIGHT_YES":
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES);
+                break;
+        }
+
         mainActGson = new Gson();
 
 //        if (getActivity().checkSelfPermission(Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) { //check internet permission
