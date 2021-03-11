@@ -73,7 +73,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 String CPinfoJSON = "";
                 //(A & 0xff) << 24 | (R & 0xff) << 16 | (G & 0xff) << 8 | (B & 0xff);
                 //mCP_UserName.setBackgroundColor(Color.parseColor("#00ffff"));
-                int NormalBGC = ContextCompat.getColor(ChangePasswordActivity.this, R.color.activityBGC);
+                int NormalBGC = ContextCompat.getColor(ChangePasswordActivity.this.getApplicationContext(), R.color.activityBGC);
                 int warningRed = ContextCompat.getColor(ChangePasswordActivity.this, R.color.warningRed);
                 if (!TextUtils.isEmpty(mCP_UserName.getText().toString())) {
                     mCP_UserName.setBackgroundColor(NormalBGC);
@@ -95,7 +95,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                         CPInfo.verifyCode = Base64.encodeToString(FormatedKey.getBytes(), Base64.DEFAULT);
                                         CPinfoJSON = CPActGson.toJson(CPInfo);
                                     } catch (Exception e) {
-                                        Toast.makeText(ChangePasswordActivity.this, R.string.E_Fail2Convert, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ChangePasswordActivity.this.getApplicationContext(), R.string.E_Fail2Convert, Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
                                         intent.putExtra(FRAG_TO_START_MESSAGE, "Settings");
                                         startActivity(intent);
@@ -110,7 +110,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                         try {
                                             URL tempURL = new URL(url);
                                         } catch (Exception e) {
-                                            Toast.makeText(ChangePasswordActivity.this, R.string.E_NotAVaildURL, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(ChangePasswordActivity.this.getApplicationContext(), R.string.E_NotAVaildURL, Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
                                             intent.putExtra(FRAG_TO_START_MESSAGE, "Settings");
                                             startActivity(intent);
@@ -149,7 +149,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onResponse(String response) {
                                                         if (response.equals("password changed")) {
-                                                            Toast.makeText(ChangePasswordActivity.this, R.string.S_PasswordChangedAndSaved, Toast.LENGTH_SHORT).show();
+                                                            Toast.makeText(ChangePasswordActivity.this.getApplicationContext(), R.string.S_PasswordChangedAndSaved, Toast.LENGTH_SHORT).show();
                                                             CP_SP_editor.putString("userName", mCP_UserName.getText().toString());
                                                             CP_SP_editor.putString("userPassword", mCP_NewPassword.getText().toString());
                                                             CP_SP_editor.apply();
@@ -161,12 +161,12 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                             public void onErrorResponse(VolleyError error) {
 
                                                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-                                                    Toast.makeText(ChangePasswordActivity.this, R.string.E_ServerNoResponse, Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(ChangePasswordActivity.this.getApplicationContext(), R.string.E_ServerNoResponse, Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
                                                     intent.putExtra(FRAG_TO_START_MESSAGE, "Settings");
                                                     startActivity(intent);
                                                 } else if (error instanceof AuthFailureError) {
-                                                    Toast.makeText(ChangePasswordActivity.this, R.string.E_WrongPasswordOrUA, Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(ChangePasswordActivity.this.getApplicationContext(), R.string.E_WrongPasswordOrUA, Toast.LENGTH_SHORT).show();
                                                     Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
                                                     intent.putExtra(FRAG_TO_START_MESSAGE, "Settings");
                                                     startActivity(intent);
@@ -182,7 +182,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
 
                                     } catch (Exception e) {
-                                        Toast.makeText(ChangePasswordActivity.this, R.string.E_Fail2ConvertRequest, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ChangePasswordActivity.this.getApplicationContext(), R.string.E_Fail2ConvertRequest, Toast.LENGTH_SHORT).show();
                                         //Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
                                         //startActivity(intent);
                                     }
@@ -191,7 +191,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                 } else {
                                     mCP_NewPassword.setBackgroundColor(warningRed);
                                     mCP_ConfirmPassword.setBackgroundColor(warningRed);
-                                    Toast.makeText(ChangePasswordActivity.this, R.string.E_PasswordNoMatch, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ChangePasswordActivity.this.getApplicationContext(), R.string.E_PasswordNoMatch, Toast.LENGTH_SHORT).show();
                                 }
 
                             } else {

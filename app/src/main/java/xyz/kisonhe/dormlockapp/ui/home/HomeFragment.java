@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment {
                         tUserInfo.cUserName = mainSP.getString("userName", "");
                         tUserInfo.cUserPassword = mainSP.getString("userPassword", "");
                         if (tUserInfo.cUserName.equals("") || tUserInfo.cUserPassword.equals("")){
-                            Toast.makeText(getActivity(), R.string.E_WrongPasswordOrUA, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity().getApplicationContext(), R.string.E_WrongPasswordOrUA, Toast.LENGTH_SHORT).show();
                             NavController navController = Navigation.findNavController(requireView());
                             navController.navigate(R.id.nav_settings);
                             return;
@@ -117,7 +117,7 @@ public class HomeFragment extends Fragment {
                         tUserInfo.verifyCode = Base64.encodeToString(FormatedKey.getBytes(), Base64.DEFAULT);
                         userinfoJSON = mainActGson.toJson(tUserInfo);
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), R.string.E_Fail2Convert, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity().getApplicationContext(), R.string.E_Fail2Convert, Toast.LENGTH_SHORT).show();
                         //NavController navController = Navigation.findNavController(requireView());
                        // navController.navigate(R.id.nav_settings);
                     }
@@ -129,7 +129,7 @@ public class HomeFragment extends Fragment {
                         try {
                             URL tempURL = new URL(url);
                         } catch (Exception e) {
-                            Toast.makeText(getActivity(), R.string.E_NotAVaildURL, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity().getApplicationContext(), R.string.E_NotAVaildURL, Toast.LENGTH_SHORT).show();
                             //NavController navController = Navigation.findNavController(requireView());
                             //navController.navigate(R.id.nav_settings);
                         }
@@ -171,11 +171,11 @@ public class HomeFragment extends Fragment {
 //                                            Toast.makeText(getActivity(), R.string.S_DoorShouldOpen, Toast.LENGTH_SHORT).show();
 //                                        }
                                         if (response.contains("auth passed")) {
-                                            Toast.makeText(getActivity(), R.string.S_DoorShouldOpen, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity().getApplicationContext(), R.string.S_DoorShouldOpen, Toast.LENGTH_SHORT).show();
                                             try {
                                                 MainActivity.BatteryLevel = Integer.parseInt(response.replace("auth passed ", ""));
                                             } catch (Exception e) {
-                                                Toast.makeText(getActivity(), R.string.E_Fail2GetBatyInfo, Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(getActivity().getApplicationContext(), R.string.E_Fail2GetBatyInfo, Toast.LENGTH_SHORT).show();
                                                 MainActivity.BatteryLevel = -1;
                                             }
                                             updateBatteryImg(root);
@@ -187,11 +187,11 @@ public class HomeFragment extends Fragment {
                             public void onErrorResponse(VolleyError error) {
 
                                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-                                    Toast.makeText(getActivity(), R.string.E_ServerNoResponse, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity().getApplicationContext(), R.string.E_ServerNoResponse, Toast.LENGTH_SHORT).show();
                                     //NavController navController = Navigation.findNavController(requireView());
                                    // navController.navigate(R.id.nav_settings);
                                 } else if (error instanceof AuthFailureError) {
-                                    Toast.makeText(getActivity(), R.string.E_WrongPasswordOrUA, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity().getApplicationContext(), R.string.E_WrongPasswordOrUA, Toast.LENGTH_SHORT).show();
                                     //NavController navController = Navigation.findNavController(requireView());
                                     //navController.navigate(R.id.nav_settings);
                                 }
@@ -205,7 +205,7 @@ public class HomeFragment extends Fragment {
 
 
                     } catch (Exception e) {
-                        Toast.makeText(getActivity(), R.string.E_Fail2ConvertRequest, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity().getApplicationContext(), R.string.E_Fail2ConvertRequest, Toast.LENGTH_SHORT).show();
                         //NavController navController = Navigation.findNavController(requireView());
                         //navController.navigate(R.id.nav_settings);
                     }
@@ -215,13 +215,16 @@ public class HomeFragment extends Fragment {
 
         //todo need to fix this shortcut,this is probably needed to be put into mainactivity.java
         Intent checkShortCut = this.getActivity().getIntent();
-        String message = checkShortCut.getStringExtra("shortCutOpenDoorEXTRA");
-        if (message != null) {
-            if (message.equals("value")) {
-                getActivity().getIntent().removeExtra("shortCutOpenDoorEXTRA");
-                mopenDoorButton.performClick();
+        if (checkShortCut != null) {
+            String message = checkShortCut.getStringExtra("shortCutOpenDoorEXTRA");
+            if (message != null) {
+                if (message.equals("value")) {
+                    getActivity().getIntent().removeExtra("shortCutOpenDoorEXTRA");
+                    mopenDoorButton.performClick();
+                }
             }
         }
+
 
 
         msettingsButton.setOnClickListener(new View.OnClickListener() {
